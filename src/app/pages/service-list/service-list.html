@@ -1,0 +1,7 @@
+<div class="service-grid" *ngIf="!loading">
+    <app-service-card *ngFor="let s of services" [service]="s"></app-service-card>
+  </div>
+  <mat-progress-spinner
+   *ngIf="loading" mode="indeterminate"></mat-progress-spinner>
+
+  

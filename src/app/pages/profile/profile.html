@@ -1,0 +1,20 @@
+<mat-card class="profile-card">
+    <h2>👤 My Profile</h2>
+  
+    <mat-divider class="mb-3"></mat-divider>
+  
+    <p><strong>Name:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Role:</strong> {{ user.role | titlecase }}</p>
+  
+    <div class="profile-links">
+      <a *ngIf="user.role === 'freelancer'" mat-raised-button color="primary" routerLink="/create">➕ Create New Service</a>
+      <a mat-raised-button color="accent" routerLink="/orders">📦 My Orders</a>
+      <a *ngIf="user.role === 'freelancer'" mat-raised-button routerLink="/my-services">🛠 My Services</a>
+    </div>
+  
+    <div class="logout-btn">
+      <button mat-stroked-button color="warn" (click)="logout()">Logout</button>
+    </div>
+  </mat-card>
+  

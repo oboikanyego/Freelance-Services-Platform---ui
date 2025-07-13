@@ -1,0 +1,54 @@
+<div class="filter-sort-container" *ngIf="!loading && orders.length > 0">
+    <mat-form-field appearance="outline" class="filter-select">
+      <mat-label>Filter by Status</mat-label>
+      <mat-select [value]="selectedStatus" (selectionChange)="onStatusChange($event.value)">
+        <mat-option value="">All</mat-option>
+        <mat-option *ngFor="let s of statuses" [value]="s">{{ s }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" class="sort-select">
+      <mat-label>Sort by Date</mat-label>
+      <mat-select [value]="sortOrder" (selectionChange)="onSortChange($event.value)">
+        <mat-option value="newest">Newest First</mat-option>
+        <mat-option value="oldest">Oldest First</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <div *ngIf="loading" class="loading-spinner">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+  
+  <div *ngIf="!loading && filteredOrders.length === 0" class="no-orders">
+    <p>No orders found.</p>
+  </div>
+  
+  <div *ngIf="!loading && filteredOrders.length > 0" class="order-list">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let order of filteredOrders">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ order.serviceId.title }} - R {{ order.serviceId.price }}
+          </mat-panel-title>
+          <mat-panel-description>
+            Status: <strong>{{ order.status }}</strong>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+  
+        <p><strong>Buyer:</strong> {{ order.buyerId.name }}</p>
+        <p><strong>Freelancer:</strong> {{ order.freelancerId.name }}</p>
+        <p><strong>Ordered On:</strong> {{ order.createdAt | date:'medium' }}</p>
+        <p><strong>Description:</strong> {{ order.serviceId.description }}</p>
+  
+        <ng-container *ngIf="order.freelancerId._id === userId">
+          <div class="status-buttons">
+            <button mat-button color="primary" (click)="updateStatus(order._id, 'in progress')" [disabled]="order.status !== 'pending'">Start</button>
+            <button mat-button color="accent" (click)="updateStatus(order._id, 'delivered')" [disabled]="order.status !== 'in progress'">Deliver</button>
+            <button mat-button color="warn" (click)="updateStatus(order._id, 'completed')" [disabled]="order.status !== 'delivered'">Complete</button>
+          </div>
+        </ng-container>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  

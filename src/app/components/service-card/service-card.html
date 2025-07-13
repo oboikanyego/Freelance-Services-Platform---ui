@@ -1,0 +1,12 @@
+<mat-card class="service-card">
+    <img mat-card-image [src]="service.imageUrl" alt="service image" />
+    <mat-card-title>{{ service.title }}</mat-card-title>
+    <mat-card-subtitle>R {{ service.price }} · {{ service.category }}</mat-card-subtitle>
+    <mat-card-content>
+      <p>{{ service.description }}</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <small>By: {{ service.userId.name }}</small>
+    </mat-card-footer>
+  </mat-card>
+  

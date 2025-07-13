@@ -1,0 +1,40 @@
+.chat-box {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+  
+    .messages {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+  
+      div {
+        background: #f0f0f0;
+        padding: 0.5rem;
+        border-radius: 6px;
+  
+        &.own {
+          background: #d1e7dd;
+          align-self: flex-end;
+        }
+  
+        small {
+          font-size: 10px;
+          color: gray;
+        }
+      }
+    }
+  
+    .chat-input {
+      display: flex;
+      gap: 1rem;
+  
+      .full-width {
+        flex: 1;
+      }
+    }
+  }
+  

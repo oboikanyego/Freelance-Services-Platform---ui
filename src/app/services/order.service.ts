@@ -1,0 +1,19 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Order } from '../models/order.model';
+
+@Injectable({ providedIn: 'root' })
+export class OrderService {
+  private apiUrl = '/api/orders';
+
+  constructor(private http: HttpClient) {}
+
+  getUserOrders(userId: string): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.apiUrl}/user/${userId}`);
+  }
+
+  updateOrderStatus(orderId: string, status: string) {
+    return this.http.put(`${this.apiUrl}/${orderId}/status`, { status });
+  }
+}

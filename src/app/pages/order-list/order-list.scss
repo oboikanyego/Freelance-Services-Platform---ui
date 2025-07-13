@@ -1,0 +1,28 @@
+.order-list {
+    max-width: 800px;
+    margin: 2rem auto;
+  }
+  
+  .status-buttons button {
+    margin-right: 1rem;
+  }
+  
+  .loading-spinner, .no-orders {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+
+  .filter-sort-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem 0;
+  
+    .filter-select, .sort-select {
+      width: 200px;
+    }
+  }
+  
+  
