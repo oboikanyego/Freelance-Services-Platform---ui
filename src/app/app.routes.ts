@@ -10,6 +10,8 @@ import { Register } from './pages/register/register';
 import { authGuard } from './guards/auth-guard';
 import { AppLayoutComponent } from './layouts/app-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout.component';
+import { ForgotPassword } from './pages/forgot-password/forgot-password';
+import { ResetPassword } from './pages/reset-password/reset-password';
 
 export const routes: Routes = [
   {
@@ -29,7 +31,11 @@ export const routes: Routes = [
     component: AuthLayoutComponent,
     children: [
       { path: 'login', component: Login },
-      { path: 'register', component: Register }
+      { path: 'register', component: Register },
+      { path: 'forgot-password', component: ForgotPassword },
+      { path: 'reset-password/:token', component: ResetPassword }
+
+
     ]
   }
 ];
