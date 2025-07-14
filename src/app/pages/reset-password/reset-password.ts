@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-reset-password',
@@ -30,7 +31,7 @@ constructor(private route: ActivatedRoute, private http: HttpClient, private rou
 }
 
 submit() {
-  this.http.post(`/api/auth/reset-password/${this.token}`, { password: this.password }).subscribe({
+  this.http.post(`${environment.apiUrl}/api/auth/reset-password/${this.token}`, { password: this.password }).subscribe({
     next: (res:any) => {
       this.message = res.message;
       setTimeout(() => this.router.navigate(['/login']), 2000);
