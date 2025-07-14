@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-forgot-password',
@@ -27,7 +28,7 @@ export class ForgotPassword {
   constructor(private http: HttpClient) {}
 
   submit() {
-    this.http.post<any>('/api/auth/forgot-password', { email: this.email }).subscribe({
+    this.http.post<any>(`${environment.apiUrl}/api/auth/forgot-password`, { email: this.email }).subscribe({
       next: (res) => {
         this.message = res.message;
         this.link = res.link; // For testing — show reset link
