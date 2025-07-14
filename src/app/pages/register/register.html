@@ -1,29 +1,42 @@
-<mat-card>
-    <form [formGroup]="form" (ngSubmit)="submit()">
-      <h2>Register</h2>
+<div class="auth-container">
+    <div class="auth-box">
+      <div class="form-section">
+        <h2>Register</h2>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" />
+          </mat-form-field>
   
-      <mat-form-field class="full-width">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name" />
-      </mat-form-field>
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" />
+          </mat-form-field>
   
-      <mat-form-field class="full-width">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" formControlName="email" />
-      </mat-form-field>
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password" />
+          </mat-form-field>
   
-      <mat-form-field class="full-width">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password" />
-      </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role">
+              <mat-option value="freelancer">Freelancer</mat-option>
+              <mat-option value="buyer">Buyer</mat-option>
+            </mat-select>
+          </mat-form-field>
   
-      <mat-form-field class="full-width">
-        <mat-label>Role</mat-label>
-        <mat-select formControlName="role">
-          <mat-option *ngFor="let r of roles" [value]="r">{{ r }}</mat-option>
-        </mat-select>
-      </mat-form-field>
+          <button mat-raised-button type="submit">Register</button>
+          <div class="login-link">
+              <span>Already have an account?</span>
+              <a matButton="outlined" mat-button color="primary" routerLink="/login">Login</a>
+            </div>
+        </form>
+      </div>
   
-      <button mat-raised-button color="primary" [disabled]="loading">Register</button>
-    </form>
-  </mat-card>  
+      <div class="image-section">
+        <img src="https://cdn.pixabay.com/photo/2015/05/28/14/53/ux-788002_1280.jpg" alt="chair image" />
+      </div>
+    </div>
+  </div>
+  

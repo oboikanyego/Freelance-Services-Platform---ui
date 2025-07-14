@@ -1,20 +1,33 @@
-<mat-card>
-    <form [formGroup]="form" (ngSubmit)="submit()">
+<div class="auth-container">
+  <div class="auth-box">
+    <div class="form-section">
       <h2>Login</h2>
-  
-      <mat-form-field class="full-width">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" />
-      </mat-form-field>
-  
-      <mat-form-field class="full-width">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password" />
-      </mat-form-field>
-  
-      <button mat-raised-button color="primary" [disabled]="loading">Login</button>
-      <!-- <button *ngIf="!(auth.user$ | async)" routerLink="/login">Login</button> -->
 
-    </form>
-  </mat-card>
-  
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <mat-form-field appearance="outline" floatLabel="always">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" floatLabel="always">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password" />
+        </mat-form-field>
+
+        <div class="form-footer">
+          <a>Forgot password?</a>
+        </div>
+
+        <button mat-raised-button type="submit">Login</button>
+        <div class="register-link">
+            <span>Don't have an account?</span>
+            <a matButton="outlined" mat-button color="primary" routerLink="/register">Register</a>
+          </div>
+      </form>
+    </div>
+
+    <div class="image-section">
+      <img src="https://cdn.pixabay.com/photo/2015/05/28/14/53/ux-788002_1280.jpg" alt="chair image" />
+    </div>
+  </div>
+</div>

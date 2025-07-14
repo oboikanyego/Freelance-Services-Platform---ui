@@ -1,10 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-/* styles.scss */
-@use '@angular/material' as mat;
-@include mat.core();
-
-// Pick the theme you selected:
 @import '@angular/material/prebuilt-themes/azure-blue.css';
+
 
 html, body {
     margin: 0;
