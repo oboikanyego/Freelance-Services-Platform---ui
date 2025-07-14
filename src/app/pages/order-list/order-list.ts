@@ -41,8 +41,7 @@ export class OrderList implements OnInit {
   ngOnInit(): void {
     const user = this.authService.getUser();
     if (!user) return;
-
-    this.userId = user._id;
+    this.userId = user.id;
     this.loadOrders();
   }
 
