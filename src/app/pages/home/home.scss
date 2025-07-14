@@ -1,0 +1,47 @@
+.home-hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: #f9f9f9;
+  
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+  
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+  
+  .features {
+    padding: 2rem;
+    background: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+  
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        background: #f0f0f0;
+        margin: 0.5rem 0;
+        padding: 1rem;
+        border-radius: 8px;
+      }
+    }
+  }
+  

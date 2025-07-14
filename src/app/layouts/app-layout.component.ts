@@ -1,3 +1,38 @@
+import { Component } from '@angular/core';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+
+@Component({
+  selector: 'app-layout',
+  standalone: true,
+  imports: [RouterOutlet, CommonModule,
+    RouterModule,
+    MatButtonModule],
+  template: `
+    <div class="container">
+      <section class="home-hero">
+        <div class="cta-buttons">
+        <div class="welcome-text">👋 Welcome to FreelanceHub</div>
+        <div>
+          <a mat-raised-button color="primary" routerLink="/services">Browse Services</a>
+          <a mat-stroked-button color="accent" routerLink="/login">Login</a>
+          <a mat-stroked-button color="warn" routerLink="/register">Register</a>
+        </div>
+        </div>
+        <span>Your place to hire skilled freelancers or offer your own services.</span>
+      </section>
+
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+
+      <footer class="app-footer">
+        <p>&copy; {{ currentYear }} FreelanceHub. All rights reserved.</p>
+      </footer>
+    </div>
+  `,
+  styles: [`
 .container {
   width: 100%;
   height: 100%;
@@ -90,3 +125,9 @@
   font-weight: 700;
 }
 
+
+  `]
+})
+export class AppLayoutComponent {
+  currentYear = new Date().getFullYear();
+}
