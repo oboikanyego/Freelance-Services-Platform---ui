@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatButton} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-login',
   imports: [
@@ -19,7 +19,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatFormFieldModule,
     MatInputModule,
     MatButton,
-    MatCheckboxModule,MatButtonModule,RouterModule
+    MatCheckboxModule,MatButtonModule,RouterModule,MatIconModule
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss'
@@ -27,6 +27,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 export class Login {
   form: FormGroup;
   loading = false;
+  hide = true;
 
   constructor(
     public fb: FormBuilder,
