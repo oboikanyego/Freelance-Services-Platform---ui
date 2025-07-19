@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Loading } from './services/loading';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { LoadingOverlay } from "./components/loading-overlay/loading-overlay";
 
 
 @Component({
@@ -14,7 +15,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     CommonModule,
     RouterModule,
     MatButtonModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    LoadingOverlay
 ],
   templateUrl: './app.html',
   styleUrl: './app.scss',

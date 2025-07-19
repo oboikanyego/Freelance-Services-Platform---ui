@@ -5,11 +5,17 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class Loading {
-  private _loading = new BehaviorSubject<boolean>(false);
-  public readonly loading$ = this._loading.asObservable();
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  loading$ = this.loadingSubject.asObservable();
 
-  setLoading(loading: boolean) {
-    this._loading.next(loading);
+  setLoading(isLoading: boolean) {
+    if (isLoading) {
+      this.loadingSubject.next(true);
+    } else {
+      // Delay hiding by 3 seconds
+      setTimeout(() => {
+        this.loadingSubject.next(false);
+      }, 3000);
+    }
   }
-  
 }
