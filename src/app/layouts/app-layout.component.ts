@@ -2,11 +2,15 @@ import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { Loading } from '../services/loading';
+
 
 @Component({
   selector: 'app-layout',
   standalone: true,
   imports: [RouterOutlet, CommonModule,
+    MatProgressBarModule,
     RouterModule,
     MatButtonModule],
   template: `
@@ -24,6 +28,12 @@ import { MatButtonModule } from '@angular/material/button';
       </section>
 
       <main>
+      <mat-progress-bar
+  *ngIf="loadingService.loading$ | async"
+  mode="indeterminate"
+  color="primary"
+  style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;"
+></mat-progress-bar>
         <router-outlet></router-outlet>
       </main>
 
@@ -129,5 +139,6 @@ import { MatButtonModule } from '@angular/material/button';
   `]
 })
 export class AppLayoutComponent {
+  constructor(public loadingService: Loading) {}
   currentYear = new Date().getFullYear();
 }

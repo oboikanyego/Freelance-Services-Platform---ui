@@ -4,13 +4,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Loading } from './services/loading';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 
 @Component({
   selector: 'app-root',
   imports: [
     CommonModule,
     RouterModule,
-    MatButtonModule
+    MatButtonModule,
+    MatProgressBarModule
 ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -24,6 +28,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
   ]
 })
 export class App {
+  constructor(public loadingService: Loading) {}
   protected readonly title = signal('client');
   currentYear: any = new Date().getFullYear();;
 }

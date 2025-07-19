@@ -6,6 +6,8 @@ import { provideHttpClient, withFetch, withInterceptors, withInterceptorsFromDi 
 import { AuthInterceptor } from './interceptors/auth.interceptor-interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { LoaderInterceptor } from './interceptors/loader-interceptor';
+import { Loading } from './services/loading';
 
 
 export const appConfig: ApplicationConfig = {
@@ -17,12 +19,18 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideHttpClient(
       withFetch(),
-      withInterceptorsFromDi()  // <-- use interceptors from DI container
+      withInterceptorsFromDi(),  // <-- use interceptors from DI container
     ),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
     }
+    
   ]
 };
