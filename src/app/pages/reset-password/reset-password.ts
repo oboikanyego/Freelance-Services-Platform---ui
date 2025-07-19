@@ -6,8 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-reset-password',
@@ -17,7 +18,10 @@ import { environment } from '../../../environments/environment';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule],
+    MatButtonModule,
+    MatIconModule,
+    RouterModule
+  ],
   templateUrl: './reset-password.html',
   styleUrl: './reset-password.scss'
 })
@@ -25,6 +29,7 @@ export class ResetPassword {
 password = '';
 message = '';
 token = '';
+hide: any = true;
 
 constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {
   this.token = this.route.snapshot.paramMap.get('token')!;
